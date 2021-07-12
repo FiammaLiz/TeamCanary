@@ -1,18 +1,18 @@
-%% Figura general para consolidaci髇
+%% Figura general para consolidaci贸n
 %Cargo los datos correspondientes a cada estado comportamental y ploteo 
-%histogramas de cada uno de ellos (SU f醩ica y t髇ica en caso de
-%anestesiado, SU f醩ica en cantando, SU y MU en escuchando vigilia)
+%histogramas de cada uno de ellos (SU f谩sica y t贸nica en caso de
+%anestesiado, SU f谩sica en cantando, SU y MU en escuchando vigilia)
 
 %% Cargo los datos
 
 binsize=5;
 
-%Posici髇 de los picos
+%Posici贸n de los picos
 picos_escuchando_s= 44.6; %estimacion a partir de histograma, SU
 picos_escuchando_m= [39.6 67.1];%estimacion a partir de histograma,MU
-picos_anestesiado_f= [49.55 64.55]; %estimacion a partir de histograma, SU f醩icas
-picos_anestesiado_t= 69.55; %estimacion a partir de histograma, SU t髇icas
-picos_cantando=[-24.6,31.2]; %provienen de la estimaci髇 que hice con los datos del paper suavizado y binsize 15ms
+picos_anestesiado_f= [49.55 64.55]; %estimacion a partir de histograma, SU f谩sicas
+picos_anestesiado_t= 69.55; %estimacion a partir de histograma, SU t贸nicas
+picos_cantando=[-24.6,31.2]; %provienen de la estimaci贸n que hice con los datos del paper suavizado y binsize 15ms
 
 %Anchor points utilizados para P0
 anchor_points_samples=[1737, 903, 510, 6681]; %valores en samples
@@ -69,7 +69,7 @@ f1= figure(1);
 %Envolvente de los oscilogramas normalizados
     j(1)=subplot(6,1,1);
     
-    %Envolvente de s韑abas en anestesiado
+    %Envolvente de s铆labas en anestesiado
     plot(t_env,mean(envall,1),'black','LineWidth',1.5)
     X=[t_env fliplr(t_env)];
     Y=[(mean(envall,1)-std(envall,0,1)) fliplr((mean(envall,1)+std(envall,0,1)))];
@@ -77,14 +77,14 @@ f1= figure(1);
     alpha .5
     hold on
     
-    %Envolvente de s韑abas en cantando
+    %Envolvente de s铆labas en cantando
     plot(times,allmeans,'Color',color_darkpurple,'LineWidth',3)
     plot(times,allmeans+stdallmeans,'Color',color_darkpurple,'LineWidth',2,'LineStyle','--')
     plot(times,allmeans-stdallmeans,'Color',color_darkpurple,'LineWidth',2,'LineStyle','--')
     line(list_anchors'*[1 1],[0 1],'color',[0.5 0.5 0.5 0.5]); %lineas grises para delimitar onsets y offsets 
-    text(list_anchors(1)-30,j(1).YLim(2)*0.9,sprintf('%.2f',0),'color','k'); %valores n鷐ericos de onsets y offsets
-    text(list_anchors(2)-20,j(1).YLim(2)*0.9,sprintf('%.2f',list_anchors(2)),'color','k'); %valores n鷐ericos de onsets y offsets
-    text(list_anchors(3)+2,j(1).YLim(2)*0.9,sprintf('%.2f',list_anchors(3)),'color','k'); %valores n鷐ericos de onsets y offsets
+    text(list_anchors(1)-30,j(1).YLim(2)*0.9,sprintf('%.2f',0),'color','k'); %valores n煤mericos de onsets y offsets
+    text(list_anchors(2)-20,j(1).YLim(2)*0.9,sprintf('%.2f',list_anchors(2)),'color','k'); %valores n煤mericos de onsets y offsets
+    text(list_anchors(3)+2,j(1).YLim(2)*0.9,sprintf('%.2f',list_anchors(3)),'color','k'); %valores n煤mericos de onsets y offsets
     
     hold off
     ylim([0 1])
@@ -104,7 +104,7 @@ f1= figure(1);
     xlim([-57.9,270.07])
     box('off')
 
-%Histograma datos anestesiado, SU f醩icas
+%Histograma datos anestesiado, SU f谩sicas
 j(3)=subplot(6,1,3);
 y=bar(t_env(1):binsize:(t_env(end)-binsize),sum(hbc,1)/size(hbc,1),'histc'); %histograma
 y.FaceColor=[1 0 0]; 
@@ -115,7 +115,7 @@ text(picos_anestesiado_f(1)+2,j(3).YLim(2)*0.9,sprintf('%.2f',picos_anestesiado_
 text(picos_anestesiado_f(2)+2,j(3).YLim(2)*0.9,sprintf('%.2f',picos_anestesiado_f(2)),'color',[1 0 0]);
 ylabel('Prob. de disparo (SUf)')
 
-%Histograma de datos anestesiado, SU t髇icas
+%Histograma de datos anestesiado, SU t贸nicas
 j(4)=subplot(6,1,4); 
 load consolidation_5ms_SUt.mat
 u=bar(t_env(1):binsize:(t_env(end)-binsize),sum(hbc,1)/size(hbc,1),'histc');
