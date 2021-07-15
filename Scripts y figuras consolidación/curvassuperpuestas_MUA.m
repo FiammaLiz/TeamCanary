@@ -20,7 +20,7 @@ list_anchors=[anchor_points(1),sum(anchor_points(1:2)),sum(anchor_points(1:3)),s
     new_onset_b=sum(anchor_points_samples(2:3))*1000/sample_rate;
     new_onset_ini=-anchor_points_samples(1)*1000/sample_rate;
     
-    load datanormalizada-MU.mat
+    load datanormalizada-MU-Fiamma.mat
     
 %Cantando
     anchors=[1,1738,2640,3158,9839];
@@ -65,7 +65,7 @@ binsize=5;
 %Envolvente de los oscilogramas normalizados
     j(1)=subplot(2,1,1);
     
-    %Envolvente de sílabas en anestesiado
+    %Envolvente de sÃ­labas en anestesiado
     plot(t_env,mean(envall,1),'black','LineWidth',1.5)
     X=[t_env fliplr(t_env)];
     Y=[(mean(envall,1)-std(envall,0,1)) fliplr((mean(envall,1)+std(envall,0,1)))];
@@ -73,14 +73,14 @@ binsize=5;
     alpha .5
     hold on
     
-    %Envolvente de sílabas en cantando
+    %Envolvente de sÃ­labas en cantando
     plot(times,allmeans,'Color',color_darkpurple,'LineWidth',3)
     plot(times,allmeans+stdallmeans,'Color',color_darkpurple,'LineWidth',2,'LineStyle','--')
     plot(times,allmeans-stdallmeans,'Color',color_darkpurple,'LineWidth',2,'LineStyle','--')
     line(list_anchors'*[1 1],[0 1],'color',[0.5 0.5 0.5 0.5]); %lineas grises para delimitar onsets y offsets 
-    text(list_anchors(1)-30,j(1).YLim(2)*0.9,sprintf('%.2f',0),'color','k'); %valores númericos de onsets y offsets
-    text(list_anchors(2)-20,j(1).YLim(2)*0.9,sprintf('%.2f',list_anchors(2)),'color','k'); %valores númericos de onsets y offsets
-    text(list_anchors(3)+2,j(1).YLim(2)*0.9,sprintf('%.2f',list_anchors(3)),'color','k'); %valores númericos de onsets y offsets
+    text(list_anchors(1)-30,j(1).YLim(2)*0.9,sprintf('%.2f',0),'color','k'); %valores nÃºmericos de onsets y offsets
+    text(list_anchors(2)-20,j(1).YLim(2)*0.9,sprintf('%.2f',list_anchors(2)),'color','k'); %valores nÃºmericos de onsets y offsets
+    text(list_anchors(3)+2,j(1).YLim(2)*0.9,sprintf('%.2f',list_anchors(3)),'color','k'); %valores nÃºmericos de onsets y offsets
     
     hold off
     ylim([0 1])
